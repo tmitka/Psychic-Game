@@ -1,9 +1,8 @@
 //create options for the computer to get a letter for the user to guess
 var guessList = "abcdefghijlkmnopqrstuvwxyz";
 
+//set the randomLetter
 var randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
-console.log(randomLetter);
-
 
 //declare variables needed for the game to function guess/wins/loses/guesses made and on valid key press store user's guess
 var userGuess = "";
@@ -35,9 +34,6 @@ document.onkeyup = function(event){
         guessesLeftElement.textContent = ("Guesses Left: " + guessesLeft);
         userGuess = event.key;
         guessesMade.push(userGuess);
-        console.log(userGuess);
-        console.log(guessesMade);
-        console.log(randomLetter);
 
             //on a lose reset the game, update loses
             if (guessesLeft == 0){
@@ -50,6 +46,7 @@ document.onkeyup = function(event){
                 randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
                 };
 
+            //on a win reset the game, update wins    
             if (userGuess === randomLetter){
                 alert("You Win");
                 guessesLeft = 10;
@@ -67,12 +64,3 @@ document.onkeyup = function(event){
     guessesMadeElement.textContent = ("Guesses Made: " + guessesMade);
 
 };
-
-
-
-
-//var newWinsElement = document.createElement("p");
-
-//newWinsElement.textContent = "test";
-
-//winsElement.appendChild(newWinsElement);
