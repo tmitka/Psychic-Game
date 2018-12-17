@@ -1,10 +1,6 @@
 //create options for the computer to get a letter for the user to guess
 var guessList = "abcdefghijlkmnopqrstuvwxyz";
 
-//select a random letter from the list
-var randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
-console.log(randomLetter);
-
 //declare variables needed for the game to function guess/wins/loses/guesses made and on valid key press store user's guess
 var userGuess = "";
 var wins = 0;
@@ -30,28 +26,35 @@ document.onkeyup = function(event){
     var validGuess = "abcdefghijlkmnopqrstuvwxyz"
 
         if (validGuess.indexOf(event.key) != -1){
+        //select a random letter from the list
+        var randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
+        console.log(randomLetter);
         guessesLeft -= 1;
         guessesLeftElement.textContent = ("Guesses Left: " + guessesLeft);
         userGuess = event.key;
         guessesMade.push(userGuess);
         console.log(userGuess);
         console.log(guessesMade);
+        console.log(randomLetter);
 
-        //on a lose reset the game, update loses
-        if (guessesLeft == 0){
-            alert("You have lost, try again");
-            guessesLeft = 10;
-            guessesLeftElement.textContent = ("Guesses Left: " + guessesLeft);
-            loses += 1;
-            losesElement.textContent = ("Loses: " + loses);
-            var randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
-            console.log(randomLetter);
-            guessesMade = [];
-            };
+            //on a lose reset the game, update loses
+            if (guessesLeft == 0){
+                alert("You have lost, try again");
+                guessesLeft = 10;
+                guessesLeftElement.textContent = ("Guesses Left: " + guessesLeft);
+                loses += 1;
+                losesElement.textContent = ("Loses: " + loses);
+                guessesMade = [];
+                };
 
-        if (userGuess === randomLetter){
-            alert("You Win");
-        }
+            if (userGuess === randomLetter){
+                alert("You Win");
+                guessesLeft = 10;
+                guessesLeftElement.textContent = ("Guesses Left: " + guessesLeft);
+                wins += 1;
+                losesElement.textContent = ("Loses: " + loses);
+                guessesMade = [];
+                };
 
     };
 
