@@ -46,8 +46,12 @@ document.onkeyup = function(event){
             losesElement.textContent = ("Loses: " + loses);
             var randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
             console.log(randomLetter);
-            guessesMade = "";
+            guessesMade = [];
             };
+
+        if (userGuess === randomLetter){
+            alert("You Win");
+        }
 
     };
 
