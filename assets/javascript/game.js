@@ -4,6 +4,13 @@ var guessList = "abcdefghijlkmnopqrstuvwxyz";
 //set the randomLetter
 var randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
 
+function reset(){
+    guessesLeft = 10;
+    guessesLeftElement.textContent = ("Guesses Left: " + guessesLeft);
+    guessesMade = [];
+    randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
+};
+
 //declare variables needed for the game to function guess/wins/loses/guesses made and on valid key press store user's guess
 var userGuess = "";
 var wins = 0;
@@ -38,23 +45,15 @@ document.onkeyup = function(event){
             //on a lose reset the game, update loses
             if (guessesLeft == 0){
                 alert("You have lost, try again");
-                guessesLeft = 10;
-                guessesLeftElement.textContent = ("Guesses Left: " + guessesLeft);
                 loses += 1;
-                losesElement.textContent = ("Loses: " + loses);
-                guessesMade = [];
-                randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
+                reset();
                 };
 
             //on a win reset the game, update wins    
             if (userGuess === randomLetter){
                 alert("You Win");
-                guessesLeft = 10;
-                guessesLeftElement.textContent = ("Guesses Left: " + guessesLeft);
                 wins += 1;
-                losesElement.textContent = ("Loses: " + loses);
-                guessesMade = [];
-                randomLetter = guessList[[Math.floor(Math.random() * guessList.length)]];
+                reset();
                 };
 
     };
